@@ -9876,7 +9876,7 @@ TODO: delete them permanently from here
  </attr>
 
 <attr id="3093" name="zimbraFeatureZulipChatEnabled" type="boolean" cardinality="single" optionalIn="account,cos,domain" flags="accountInfo,accountInherited,domainAdminModifiable" since="10.0.0">
-  <defaultCOSValue>TRUE</defaultCOSValue>
+  <defaultCOSValue>FALSE</defaultCOSValue>
   <desc>Whether or not zulip chat is enabled.
         If false at domain level, feature not available at domain, cos &amp; account.
         If true at domain and false at cos, feature not available at cos &amp; account.
