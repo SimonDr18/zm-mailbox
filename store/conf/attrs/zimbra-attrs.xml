@@ -9762,4 +9762,11 @@ TODO: delete them permanently from here
   <desc>filter to decide members of the address list using ldap</desc>
 </attr>
 
+<attr id="3077" name="zimbraProxySendMailAddrParam" type="string" cardinality="multi" optionalIn="account,cos" since="8.8.15">
+  <desc>Specify allowed domain and custom parameter for sendMailId in proxy request body for authentification.
+    Following format : domain,body_parameter
+    Example : *.zimbra.com,zimbra_mail_addr
+  </desc>
+</attr>
+
 </attrs>

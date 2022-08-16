@@ -1666,7 +1666,8 @@ public class ZAttrProvisioning {
 
     public static enum PrefClientType {
         standard("standard"),
-        advanced("advanced");
+        advanced("advanced"),
+        zimbrax("zimbrax");
         private String mValue;
         private PrefClientType(String value) { mValue = value; }
         public String toString() { return mValue; }
@@ -1678,6 +1679,7 @@ public class ZAttrProvisioning {
         }
         public boolean isStandard() { return this == standard;}
         public boolean isAdvanced() { return this == advanced;}
+        public boolean isZimbrax() { return this == zimbrax;}
     }
 
     public static enum PrefComposeDirection {
@@ -14217,6 +14219,16 @@ public class ZAttrProvisioning {
      */
     @ZAttr(id=303)
     public static final String A_zimbraProxyCacheableContentTypes = "zimbraProxyCacheableContentTypes";
+
+    /**
+     * Specify allowed domain and custom parameter for sendMailId in proxy
+     * request body for authentification. Following format :
+     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     *
+     * @since ZCS 8.8.15
+     */
+    @ZAttr(id=3077)
+    public static final String A_zimbraProxySendMailAddrParam = "zimbraProxySendMailAddrParam";
 
     /**
      * Name to be used in public API such as REST or SOAP proxy.
