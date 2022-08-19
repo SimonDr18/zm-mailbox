@@ -97,14 +97,14 @@ public class ProxyServlet extends ZimbraServlet {
     }
 
     private Set<String> getProxySendMailAddrParam(AuthToken auth) throws ServiceException {
-	Provisioning prov = Provisioning.getInstance();
-	Account acct = prov.get(AccountBy.id, auth.getAccountId(), auth);
-	Cos cos = prov.getCOS(acct);
+		Provisioning prov = Provisioning.getInstance();
+		Account acct = prov.get(AccountBy.id, auth.getAccountId(), auth);
+		Cos cos = prov.getCOS(acct);
 
-	Set<String> sendMailAddrParams = cos.getMultiAttrSet(Provisioning.A_zimbraProxySendMailAddrParam);
-	ZimbraLog.zimlet.debug("send mail address parameter in proxy result: "+sendMailAddrParams);
+		Set<String> sendMailAddrParams = cos.getMultiAttrSet(Provisioning.A_zimbraProxySendMailAddrParam);
+		ZimbraLog.zimlet.debug("send mail address parameter in proxy result: "+sendMailAddrParams);
 
-	return sendMailAddrParams;
+		return sendMailAddrParams;
     }
 
     private String getProxySendMailAddr(AuthToken auth) throws ServiceException {
