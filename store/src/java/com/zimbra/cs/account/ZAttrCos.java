@@ -43191,144 +43191,144 @@ public abstract class ZAttrCos extends NamedEntry {
     }
 
     /**
-     * Specify allowed domain and custom parameter for sendMailId in proxy
-     * request body for authentification. Following format :
-     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     * Specify allowed domain and custom header name for sendMailId in proxy
+     * request body for authentication. Following format : domain,Header-Name
+     * Example : *.zimbra.com,Mail-Auth
      *
-     * @return zimbraProxySendMailAddrParam, or empty array if unset
+     * @return zimbraProxySendMailAddrHeader, or empty array if unset
      *
      * @since ZCS 8.8.15
      */
     @ZAttr(id=3077)
-    public String[] getProxySendMailAddrParam() {
-        return getMultiAttr(Provisioning.A_zimbraProxySendMailAddrParam, true, true);
+    public String[] getProxySendMailAddrHeader() {
+        return getMultiAttr(Provisioning.A_zimbraProxySendMailAddrHeader, true, true);
     }
 
     /**
-     * Specify allowed domain and custom parameter for sendMailId in proxy
-     * request body for authentification. Following format :
-     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     * Specify allowed domain and custom header name for sendMailId in proxy
+     * request body for authentication. Following format : domain,Header-Name
+     * Example : *.zimbra.com,Mail-Auth
      *
-     * @param zimbraProxySendMailAddrParam new value
+     * @param zimbraProxySendMailAddrHeader new value
      * @throws com.zimbra.common.service.ServiceException if error during update
      *
      * @since ZCS 8.8.15
      */
     @ZAttr(id=3077)
-    public void setProxySendMailAddrParam(String[] zimbraProxySendMailAddrParam) throws com.zimbra.common.service.ServiceException {
+    public void setProxySendMailAddrHeader(String[] zimbraProxySendMailAddrHeader) throws com.zimbra.common.service.ServiceException {
         HashMap<String,Object> attrs = new HashMap<String,Object>();
-        attrs.put(Provisioning.A_zimbraProxySendMailAddrParam, zimbraProxySendMailAddrParam);
+        attrs.put(Provisioning.A_zimbraProxySendMailAddrHeader, zimbraProxySendMailAddrHeader);
         getProvisioning().modifyAttrs(this, attrs);
     }
 
     /**
-     * Specify allowed domain and custom parameter for sendMailId in proxy
-     * request body for authentification. Following format :
-     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     * Specify allowed domain and custom header name for sendMailId in proxy
+     * request body for authentication. Following format : domain,Header-Name
+     * Example : *.zimbra.com,Mail-Auth
      *
-     * @param zimbraProxySendMailAddrParam new value
+     * @param zimbraProxySendMailAddrHeader new value
      * @param attrs existing map to populate, or null to create a new map
      * @return populated map to pass into Provisioning.modifyAttrs
      *
      * @since ZCS 8.8.15
      */
     @ZAttr(id=3077)
-    public Map<String,Object> setProxySendMailAddrParam(String[] zimbraProxySendMailAddrParam, Map<String,Object> attrs) {
+    public Map<String,Object> setProxySendMailAddrHeader(String[] zimbraProxySendMailAddrHeader, Map<String,Object> attrs) {
         if (attrs == null) attrs = new HashMap<String,Object>();
-        attrs.put(Provisioning.A_zimbraProxySendMailAddrParam, zimbraProxySendMailAddrParam);
+        attrs.put(Provisioning.A_zimbraProxySendMailAddrHeader, zimbraProxySendMailAddrHeader);
         return attrs;
     }
 
     /**
-     * Specify allowed domain and custom parameter for sendMailId in proxy
-     * request body for authentification. Following format :
-     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     * Specify allowed domain and custom header name for sendMailId in proxy
+     * request body for authentication. Following format : domain,Header-Name
+     * Example : *.zimbra.com,Mail-Auth
      *
-     * @param zimbraProxySendMailAddrParam new to add to existing values
+     * @param zimbraProxySendMailAddrHeader new to add to existing values
      * @throws com.zimbra.common.service.ServiceException if error during update
      *
      * @since ZCS 8.8.15
      */
     @ZAttr(id=3077)
-    public void addProxySendMailAddrParam(String zimbraProxySendMailAddrParam) throws com.zimbra.common.service.ServiceException {
+    public void addProxySendMailAddrHeader(String zimbraProxySendMailAddrHeader) throws com.zimbra.common.service.ServiceException {
         HashMap<String,Object> attrs = new HashMap<String,Object>();
-        StringUtil.addToMultiMap(attrs, "+" + Provisioning.A_zimbraProxySendMailAddrParam, zimbraProxySendMailAddrParam);
+        StringUtil.addToMultiMap(attrs, "+" + Provisioning.A_zimbraProxySendMailAddrHeader, zimbraProxySendMailAddrHeader);
         getProvisioning().modifyAttrs(this, attrs);
     }
 
     /**
-     * Specify allowed domain and custom parameter for sendMailId in proxy
-     * request body for authentification. Following format :
-     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     * Specify allowed domain and custom header name for sendMailId in proxy
+     * request body for authentication. Following format : domain,Header-Name
+     * Example : *.zimbra.com,Mail-Auth
      *
-     * @param zimbraProxySendMailAddrParam new to add to existing values
+     * @param zimbraProxySendMailAddrHeader new to add to existing values
      * @param attrs existing map to populate, or null to create a new map
      * @return populated map to pass into Provisioning.modifyAttrs
      *
      * @since ZCS 8.8.15
      */
     @ZAttr(id=3077)
-    public Map<String,Object> addProxySendMailAddrParam(String zimbraProxySendMailAddrParam, Map<String,Object> attrs) {
+    public Map<String,Object> addProxySendMailAddrHeader(String zimbraProxySendMailAddrHeader, Map<String,Object> attrs) {
         if (attrs == null) attrs = new HashMap<String,Object>();
-        StringUtil.addToMultiMap(attrs, "+" + Provisioning.A_zimbraProxySendMailAddrParam, zimbraProxySendMailAddrParam);
+        StringUtil.addToMultiMap(attrs, "+" + Provisioning.A_zimbraProxySendMailAddrHeader, zimbraProxySendMailAddrHeader);
         return attrs;
     }
 
     /**
-     * Specify allowed domain and custom parameter for sendMailId in proxy
-     * request body for authentification. Following format :
-     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     * Specify allowed domain and custom header name for sendMailId in proxy
+     * request body for authentication. Following format : domain,Header-Name
+     * Example : *.zimbra.com,Mail-Auth
      *
-     * @param zimbraProxySendMailAddrParam existing value to remove
+     * @param zimbraProxySendMailAddrHeader existing value to remove
      * @throws com.zimbra.common.service.ServiceException if error during update
      *
      * @since ZCS 8.8.15
      */
     @ZAttr(id=3077)
-    public void removeProxySendMailAddrParam(String zimbraProxySendMailAddrParam) throws com.zimbra.common.service.ServiceException {
+    public void removeProxySendMailAddrHeader(String zimbraProxySendMailAddrHeader) throws com.zimbra.common.service.ServiceException {
         HashMap<String,Object> attrs = new HashMap<String,Object>();
-        StringUtil.addToMultiMap(attrs, "-" + Provisioning.A_zimbraProxySendMailAddrParam, zimbraProxySendMailAddrParam);
+        StringUtil.addToMultiMap(attrs, "-" + Provisioning.A_zimbraProxySendMailAddrHeader, zimbraProxySendMailAddrHeader);
         getProvisioning().modifyAttrs(this, attrs);
     }
 
     /**
-     * Specify allowed domain and custom parameter for sendMailId in proxy
-     * request body for authentification. Following format :
-     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     * Specify allowed domain and custom header name for sendMailId in proxy
+     * request body for authentication. Following format : domain,Header-Name
+     * Example : *.zimbra.com,Mail-Auth
      *
-     * @param zimbraProxySendMailAddrParam existing value to remove
+     * @param zimbraProxySendMailAddrHeader existing value to remove
      * @param attrs existing map to populate, or null to create a new map
      * @return populated map to pass into Provisioning.modifyAttrs
      *
      * @since ZCS 8.8.15
      */
     @ZAttr(id=3077)
-    public Map<String,Object> removeProxySendMailAddrParam(String zimbraProxySendMailAddrParam, Map<String,Object> attrs) {
+    public Map<String,Object> removeProxySendMailAddrHeader(String zimbraProxySendMailAddrHeader, Map<String,Object> attrs) {
         if (attrs == null) attrs = new HashMap<String,Object>();
-        StringUtil.addToMultiMap(attrs, "-" + Provisioning.A_zimbraProxySendMailAddrParam, zimbraProxySendMailAddrParam);
+        StringUtil.addToMultiMap(attrs, "-" + Provisioning.A_zimbraProxySendMailAddrHeader, zimbraProxySendMailAddrHeader);
         return attrs;
     }
 
     /**
-     * Specify allowed domain and custom parameter for sendMailId in proxy
-     * request body for authentification. Following format :
-     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     * Specify allowed domain and custom header name for sendMailId in proxy
+     * request body for authentication. Following format : domain,Header-Name
+     * Example : *.zimbra.com,Mail-Auth
      *
      * @throws com.zimbra.common.service.ServiceException if error during update
      *
      * @since ZCS 8.8.15
      */
     @ZAttr(id=3077)
-    public void unsetProxySendMailAddrParam() throws com.zimbra.common.service.ServiceException {
+    public void unsetProxySendMailAddrHeader() throws com.zimbra.common.service.ServiceException {
         HashMap<String,Object> attrs = new HashMap<String,Object>();
-        attrs.put(Provisioning.A_zimbraProxySendMailAddrParam, "");
+        attrs.put(Provisioning.A_zimbraProxySendMailAddrHeader, "");
         getProvisioning().modifyAttrs(this, attrs);
     }
 
     /**
-     * Specify allowed domain and custom parameter for sendMailId in proxy
-     * request body for authentification. Following format :
-     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     * Specify allowed domain and custom header name for sendMailId in proxy
+     * request body for authentication. Following format : domain,Header-Name
+     * Example : *.zimbra.com,Mail-Auth
      *
      * @param attrs existing map to populate, or null to create a new map
      * @return populated map to pass into Provisioning.modifyAttrs
@@ -43336,9 +43336,9 @@ public abstract class ZAttrCos extends NamedEntry {
      * @since ZCS 8.8.15
      */
     @ZAttr(id=3077)
-    public Map<String,Object> unsetProxySendMailAddrParam(Map<String,Object> attrs) {
+    public Map<String,Object> unsetProxySendMailAddrHeader(Map<String,Object> attrs) {
         if (attrs == null) attrs = new HashMap<String,Object>();
-        attrs.put(Provisioning.A_zimbraProxySendMailAddrParam, "");
+        attrs.put(Provisioning.A_zimbraProxySendMailAddrHeader, "");
         return attrs;
     }
 

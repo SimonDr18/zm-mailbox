@@ -65,7 +65,6 @@ import com.zimbra.cs.service.AuthProvider;
 import com.zimbra.cs.service.FileUploadServlet;
 import com.zimbra.cs.service.FileUploadServlet.Upload;
 import com.zimbra.cs.servlet.ZimbraServlet;
-
 /**
  * @author jylee
  */
@@ -97,19 +96,23 @@ public class ProxyServlet extends ZimbraServlet {
         return allowedDomains;
     }
 
-    private Set<String> getProxySendMailAddrParam(AuthToken auth) throws ServiceException {
+    private Set<String> getProxySendMailAddrHeaders(AuthToken auth) throws ServiceException {
         Provisioning prov = Provisioning.getInstance();
         Account acct = prov.get(AccountBy.id, auth.getAccountId(), auth);
+
         Cos cos = prov.getCOS(acct);
 
-        Set<String> sendMailAddrParams = cos.getMultiAttrSet(Provisioning.A_zimbraProxySendMailAddrParam);
-        ZimbraLog.zimlet.debug("send mail address parameter in proxy result: "+sendMailAddrParams);
-        return sendMailAddrParams;
+        Set<String> sendMailAddrHeaders = cos.getMultiAttrSet(Provisioning.A_zimbraProxySendMailAddrHeader);
+
+        ZimbraLog.zimlet.debug("send mail address parameter in proxy result: "+sendMailAddrHeaders);
+
+        return sendMailAddrHeaders;
     }
 
     private String getProxySendMailAddr(AuthToken auth) throws ServiceException {
         Provisioning prov = Provisioning.getInstance();
         Account acct = prov.get(AccountBy.id, auth.getAccountId(), auth);
+
         String mailAddr = acct.getDefaultIdentity().getFriendlyEmailAddress().getAddress();
 
         return mailAddr;
@@ -142,26 +145,26 @@ public class ProxyServlet extends ZimbraServlet {
     private String checkPermissionOnProxyMailAddr(URL target, AuthToken auth) {
         String host = target.getHost().toLowerCase();
         ZimbraLog.zimlet.debug("checking permission to send address in proxy body to target host: " + host);
-        Set<String> domainParams;
+        Set<String> domainHeaders;
         try {
-            domainParams = getProxySendMailAddrParam(auth);
+            domainHeaders = getProxySendMailAddrHeaders(auth);
         } catch (ServiceException se) {
-            ZimbraLog.zimlet.info("error getting proxySendMailAddrParam: " + se.getMessage());
+            ZimbraLog.zimlet.info("error getting proxySendMailAddrHeaders: " + se.getMessage());
             return null;
         }
-        for (String domainParam : domainParams) {
-            // domain_param example : "domain_name,body_param"
-            List<String> arrayDomainParam = Arrays.asList(domainParam.split(","));
-            String domain = arrayDomainParam.get(0);
-            String bodyParam = arrayDomainParam.get(1);
+        for (String domainHeader : domainHeaders) {
+            // domainHeader example : "domain.com,Header-Name"
+            List<String> arrayDomainHeader = Arrays.asList(domainHeader.split(","));
+            String domain = arrayDomainHeader.get(0);
+            String header = arrayDomainHeader.get(1);
             if (domain.charAt(0) == '*') {
                 domain = domain.substring(1);
                 if (host.endsWith(domain)) {
-                    return bodyParam;
+                    return header;
                 }
             }
             else if (host.equals(domain)) {
-                return bodyParam;
+                return header;
             }
         }
         return null;
@@ -202,7 +205,6 @@ public class ProxyServlet extends ZimbraServlet {
             while ((num = is.read(buffer)) != -1) {
                 baos.write(buffer, 0, num);
             }
-
             return baos.toByteArray();
         } finally {
             ByteUtil.closeStream(baos);
@@ -286,7 +288,6 @@ public class ProxyServlet extends ZimbraServlet {
             return;
         }
 
-
         // determine whether to return the target inline or store it as an upload
         String uploadParam = req.getParameter(UPLOAD_PARAM);
         boolean asUpload = uploadParam != null && (uploadParam.equals("1") || uploadParam.equalsIgnoreCase("true"));
@@ -343,13 +344,13 @@ public class ProxyServlet extends ZimbraServlet {
             }
 
             // header mail auth
-            String mailParam = checkPermissionOnProxyMailAddr(url, authToken);
+            String mailHeader = checkPermissionOnProxyMailAddr(url, authToken);
             String mailAddr = null;
-            if (mailParam != null) {
+            if (mailHeader != null) {
                 // retrieve mailAddr, defaults to null in case of error
                 try {
                     mailAddr = getProxySendMailAddr(authToken);
-                    method.addHeader("X-Zimbra-" + mailParam, mailAddr);
+                    method.addHeader("X-Zimbra-" + mailHeader, mailAddr);
                 } catch (ServiceException se) {
                     ZimbraLog.zimlet.info("couldn't fetch getProxySendMailAddr data");
                 }

@@ -14221,14 +14221,14 @@ public class ZAttrProvisioning {
     public static final String A_zimbraProxyCacheableContentTypes = "zimbraProxyCacheableContentTypes";
 
     /**
-     * Specify allowed domain and custom parameter for sendMailId in proxy
-     * request body for authentification. Following format :
-     * domain,body_parameter Example : *.zimbra.com,zimbra_mail_addr
+     * Specify allowed domain and custom header name for sendMailId in proxy
+     * request body for authentication. Following format : domain,Header-Name
+     * Example : *.zimbra.com,Mail-Auth
      *
      * @since ZCS 8.8.15
      */
     @ZAttr(id=3077)
-    public static final String A_zimbraProxySendMailAddrParam = "zimbraProxySendMailAddrParam";
+    public static final String A_zimbraProxySendMailAddrHeader = "zimbraProxySendMailAddrHeader";
 
     /**
      * Name to be used in public API such as REST or SOAP proxy.
